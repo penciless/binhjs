@@ -1,0 +1,9 @@
+{
+  "name": "binhjs",
+  "version": "1.0.0",
+  "description": "Binh Framework",
+  "author": "Nguyen Duc Binh",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "index.js"
+}
