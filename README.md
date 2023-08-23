@@ -4,11 +4,11 @@ The content of this page is a tutorial how to use this framework.
 
 # Table of Content
 
-## I. Get Started
+### I. Get Started
   1. Create a project
   2. Project directory structure
 
-## II. Routing
+### II. Routing
   1. Router
   2. Sub router
 
