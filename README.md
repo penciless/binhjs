@@ -1,17 +1,18 @@
 # binhjs
-A personal framework to develop web app following personal references.
-The content of this page is a tutorial how to use this framework.
+A personal framework to develop web app.
+
+The document is a tutorial using this framework.
 
 # Table of Content
 
-### Z. Overview
+### Z. Overview & Ideas
   1. Diagram / Ideas how framework works
   2. Relationship: UI Components, Data State, Services
   3. UI Components: elements, features, layouts, pages
 
 ### I. Get Started
   1. Create a project
-  2. Project directory structure
+  2. Project structure
 
 ### II. Routing
   1. Router
@@ -25,31 +26,39 @@ The content of this page is a tutorial how to use this framework.
 
 ## I. Get Started
 
-In this section, we get our hands dirty by setup a web app project using the framework.
+In this section, the framework is learnt by practice.
+
+For deeper understanding, please read [Overview & Ideas].
 
 ### 1. Create a project
 There are 2 ways of creating a binhjs project:
 * Frontend with traditional web files _(.html, .css, .js)_
 * Backend using NodeJS.
 
-In this tutorial, ***frontend*** is the main target, so please access [binhend] to learn how to start a project from backend with NodeJS.
+In this tutorial, ***frontend*** is the main focus, please access [binhend] for tutorial with NodeJS.
 
 Let's start!!!
 
-First, we create a folder containing `index.html`, `index.js` and `index.css (optional)`.
+First, creating files `index.html`, `index.js` and `index.css (optional)`.
 
-In HTML file, we declare a standard web page as follows:
+In HTML file, a standard web page is declared as follows:
 
 `index.html`
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>My Website</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://binhjs.pages.dev/dist/binh.min.js"></script>
+
+    <!-- Optional CSS: beautify layout/UI -->
     <link rel="stylesheet" href="/index.css">
+
+    <!-- Required script: BinhJS Framework -->
+    <script src="https://binhjs.pages.dev/dist/binh.min.js"></script>
+
+    <!-- Required script: the main script file holds code implementaion using BinhJS -->
     <script src="/index.js"></script>
   </head>
 
@@ -57,28 +66,21 @@ In HTML file, we declare a standard web page as follows:
 </html>
 ```
 
-In file `index.html`, all required files are declared to be loaded:
-* Library `binhjs` to use the framework
-* JavaScript file `index.js` to implement web app codebase
-* CSS file `index.css` is optional to beautify layout/UI
-
-Next, when HTML file is opened in browser, scripts are loaded and run.
-
-In the main script `index.js`, a simple router is implemented to declare mappings between UI components and URL patterns.
+In the main script, a simple router declares mappings between UI components and URL patterns.
 
 `index.js`
-```
+```js
 Binh({
-    '': Binh.el('div')('Hello World'),
-    '/home': '/pages/HomePage.js'
+    '': Binh.el('div')('Hello World'), // Create an UI Component mapping default route
+    '/home': '/pages/HomePage.js' // URL fetching UI Component 'HomePage' on loading route '/home'
 });
 ```
 
 Explain:
 * `Binh` is the framework object which can be accessed globally to use its utilities.
-* `Binh(routes)` constructor initializes webapp with input as a routing map/object
-* `Binh.el('div')` create an UI component `<div></div>` which then receives text node "Hello World" as child element
-* Route `''` will load UI component `<div>Hello World</div>` when URL _`https://yourweb.com/`_ is accessed.
-* Route `''` is also a default route for URLs that not matched any pattern when accessed. _(e.g. `https://yourweb.com/any/invalid/pattern`)_
-* Route `'/home'` will download UI component `HomePage` from relative URL `'/pages/HomePage.js'` and load that UI component onto web page when URL _`https://yourweb.com/home`_ is accessed.
+* `Binh(routes)` constructor initializes web app with input as a routing map/object - _handled by `Binh.Router` mentioned in later sections_.
+* `Binh.el('div')` creates an UI component `<div></div>` which then receives text node "Hello World" as child element.
+* Default route `''` is also for URLs that not matched any pattern. _(e.g. `https://yourweb.com/any/invalid/pattern`)_
+* On route `''`, UI component `<div>Hello World</div>` is loaded when _`https://yourweb.com/`_ is browsed.
+* On route `'/home'`, UI component `HomePage` from relative URL `'/pages/HomePage.js'` is fetched and loaded when _`https://yourweb.com/home`_ is browsed.
 
