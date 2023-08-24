@@ -66,19 +66,19 @@ In HTML file, a standard web page is declared as follows:
 </html>
 ```
 
-In the main script, a simple router declares mappings between UI components and URL patterns.
+In the main script, web app is initialized with mappings between UI components and URL patterns.
 
 `index.js`
 ```js
 Binh({
     '': Binh.el('div')('Hello World'), // Create an UI Component mapping default route
-    '/home': '/pages/HomePage.js' // URL fetching UI Component 'HomePage' on loading route '/home'
+    '/home': '/pages/HomePage.js' // Fetching UI Component 'HomePage' on loading route '/home'
 });
 ```
 
 Explain:
 * `Binh` is the framework object which can be accessed globally to use its utilities.
-* `Binh(routes)` constructor initializes web app with input as a routing map/object - _handled by `Binh.Router` mentioned in later sections_.
+* `Binh(routes)` initializes web app with a routing map/object - _handled by `Binh.Router`_.
 * `Binh.el('div')` creates an UI component `<div></div>` which then receives text node "Hello World" as child element.
 * Default route `''` is also for URLs that not matched any pattern. _(e.g. `https://yourweb.com/any/invalid/pattern`)_
 * On route `''`, UI component `<div>Hello World</div>` is loaded when _`https://yourweb.com/`_ is browsed.
