@@ -3,7 +3,7 @@ A personal framework to develop web app.
 
 The document is a tutorial using this framework.
 
-## Table of Content
+# Table of Content
 
 **Overview & Ideas**
   1. Diagram / Ideas how framework works
@@ -22,13 +22,13 @@ The document is a tutorial using this framework.
   1. Declaration
   2. Import components
 
-## Get Started
+# Get Started
 
 In this section, the framework is learnt by practice.
 
 For deeper understanding, please read [Overview & Ideas].
 
-### 1. Create a project
+## 1. Create a project
 There are 2 ways of creating a binhjs project:
 * Frontend with traditional web files _(.html, .css, .js)_
 * Backend using NodeJS.
@@ -74,7 +74,7 @@ Binh({
 });
 ```
 
-**Explanation**
+### Explanation
 * `Binh` is the framework object which can be accessed globally to use its utilities.
 * `Binh(routes)` initializes web app with a routing map/object - _handled by `Binh.Router`_.
 * `Binh.el('div')` creates an UI component `<div></div>` which then receives text node "Hello World" as child element.
@@ -82,21 +82,20 @@ Binh({
 * On route `''`, UI component `<div>Hello World</div>` is loaded when _`https://yourweb.com/`_ is browsed.
 * On route `'/home'`, UI component `HomePage` from relative URL `'/pages/HomePage.js'` is loaded when _`https://yourweb.com/home`_ is browsed.
 
-**Done!!!**
-
+### Done!!!
 Web app should be ready to run on browser, but only with default route `''`.
 
 Route `'/home'` is just an example about how UI component should be actually loaded.
 
 Creating UI components will be introduced in later sections.
 
-### 2. Project structure
+## 2. Project structure
 
 In general, project structure is based on how components (files) are managed.
 
 However, a convention should be declared to follow.
 
-**Convention Structure**
+### Convention Structure
 ```
 /project
     /elements  - UI components
@@ -115,7 +114,7 @@ However, a convention should be declared to follow.
     index.js
 ```
 
-**Explanation**
+### Explanation
 
 There are 4 directories for UI Components:
 * ***elements***: most basic and independent components can be reused widely _(even outside project)_
@@ -123,7 +122,7 @@ There are 4 directories for UI Components:
 * ***layouts***: group of elements/features is arranged and aligned in a portion of view
 * ***pages***: group of elements/features/layouts is arranged and aligned on a web page specified by URL/route
 
-**Conclusion**
+### Conclusion
 
 By splitting UI components into 4 types, it helps to reuse components in different levels more apparently.
 
