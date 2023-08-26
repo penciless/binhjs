@@ -126,17 +126,19 @@ There are 4 directories for UI Components:
 
 By splitting UI components into 4 types, it helps to reuse components in different levels more apparently.
 
-However, this is just a convention, not guaranteed since it requires developers to design components correctly matching their type purposes.
+However, this is just a convention, and not guaranteed since it requires developers to design components correctly matching their type purposes.
 
 All 4 types of UI component can be reused in other projects if get packaged carefully, which can be achieved easier using [binhend].
 
-Example, website A can import UI components from website B (CORS allowed) via URL `https://websiteB.com/elements/ComponentB.js`.
+Example, website A can import UI components from website B (CORS allowed) via URL, for example, `https://websiteB.com/elements/ComponentB.js`.
 
 Importing components is discussed in later sections.
 
 # Routing
 
-URL Address indicates which content should be display on web page.
+URL Address indicates which content should be displayed on web page.
+
+Router plays a role on detecting current URL parts and switching views.
 
 Therefore, understanding Router is a good starting point.
 
@@ -148,15 +150,19 @@ Therefore, understanding Router is a good starting point.
 **Constructor:** `Binh.Router(routes, options)`
 > A router must associate with a HTML Element on webpage to render content inside.
 > 
-> To indicate which element should be associate, use `options.enode` _(prior)_, or `options.element`.
+> To indicate which element should be associated, use `options.enode` _(prior)_, or `options.element`.
 > 
 > By default, if no declaration, it associates with a `<div>` element created by itself.
 > 
 > When using `Binh(routes, options)`, by default, router associates with `document.body`.
+>
+> ***NOTE:*** if the element is not rendered on DOM, all routing settings is removed and unavailable.
 
 **Instance:** `new Binh.Router(routes, options)`
 
-> `routes`: an object with `key` as URL pattern and `value` as Number, URL String, or UI Component
+> **@param** `routes`
+>
+> An object with `key` as URL pattern and `value` as Number, URL String, or UI Component
 > 
 > ```js
 > {
@@ -177,7 +183,9 @@ Therefore, understanding Router is a good starting point.
 > }
 > ```
 > 
-> `options`: an object holding settings of a router instance's behaviours
+> **@param** `options`
+> 
+> An object holding settings of a router instance
 > 
 > ```js
 > {
@@ -186,5 +194,10 @@ Therefore, understanding Router is a good starting point.
 >     element: document.body // by default, if no declaration, a '<div>' element is created to hold the content
 > }
 > ```
-> 
+
+**Method:** `Binh.Router.onroute(callback)`
+
+> `callback`: a function that is invoked every time routing new path
+>
+> Note: navigate to same path, e.g. `/home` -> `/home`, won't invoke this function.
 
