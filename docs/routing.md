@@ -85,7 +85,7 @@ Therefore, understanding Router is a good point to get started.
 
 <br/>
 
-**Method:** `Binh.Router.onroute(callback)`
+**Class Method:** `Binh.Router.onroute(callback)`
 
 > A function invoked every time a new path/route is loaded.
 > 
@@ -100,7 +100,7 @@ Therefore, understanding Router is a good point to get started.
 
 <br/>
 
-**Method:** `Binh.Router.navigate(route)`
+**Class Method:** `Binh.Router.navigate(route)`
 
 > Navigate the current route (current view) to another route (another view) by changing the URL but not reloading whole webpage.
 >
@@ -113,7 +113,7 @@ Therefore, understanding Router is a good point to get started.
 
 <br/>
 
-**Method:** `Binh.Router.query(shouldDecode)`
+**Class Method:** `Binh.Router.query(shouldDecode)`
 
 > Get the current queries on URL as an object.
 >
@@ -133,6 +133,14 @@ Therefore, understanding Router is a good point to get started.
 > }
 > ```
 > ***NOTE:*** Returned values are always type of `string`.
+
+<br/>
+
+**Instance Method:** `new Binh.Router(routes, options).load()`
+
+> Force reload the current view handled by router.
+>
+> **@return** : undefined
 
 
 How to modify routes later?
