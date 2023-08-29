@@ -8,6 +8,8 @@ Router plays a role on handling URLs and switching views.
 
 Therefore, understanding Router is a good point to get started.
 
+<br/>
+
 ## 1. Router
 
 **Class:** `Binh.Router`
@@ -142,8 +144,24 @@ Therefore, understanding Router is a good point to get started.
 >
 > **@return** : undefined
 
+<br/>
+
+## 1. Nested routing
+
+Every route starts at root hostname.
+
+Every router is an independent instance and not relevant to each others.
+
+Nested routes are flattened into explicit URL pathnames
+
+Not support URL parameters '/:key', only support URL query '?keyA=valueA&keyB=valueB'
+
+<br/>
 
 How to modify routes later?
+
 How to get current route?
+
 How to reload whole webpage?
+
 Alternatives for getting query object?
