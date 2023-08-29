@@ -33,7 +33,7 @@ Therefore, understanding Router is a good point to get started.
 
 > **@param** `routes` : Object
 >
-> An object `{ key : value }` with `key` as URL pattern and `value` as Number, URL String, or UI Component.
+> An object `{ route : target }` with `route` as URL pattern and `target` as Number, URL String, or UI Component.
 > 
 > ```js
 > {
@@ -60,11 +60,10 @@ Therefore, understanding Router is a good point to get started.
 > }
 > ```
 >
-> ***NOTE:***
-> * Routes `'/'` and `''` are different and might point to same view.
-> * Route `'/'` only works for empty path, e.g. `https://website.com/`.
-> * Route `''` is a default route for URLs not matching any declared pattern, e.g. `https://website.com/any/unknown/path`.
-> * Other pairs like `'/any'` and `'any'` are the same route and always point to same view.
+> * Routes `'/'` and `''` _are different_ and might point to same target.
+> * Route `'/'` _only works_ for empty path, e.g. `https://website.com/`.
+> * Route `''` _is a default route_ for URLs not matching any declared pattern, e.g. `https://website.com/any/unknown/path`.
+> * Other pairs like `'/any'` and `'any'` _are the same route_ and always point to same target.
 > 
 > **@param** `options` : Object
 > 
