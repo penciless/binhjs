@@ -24,7 +24,8 @@ Therefore, understanding Router is a good starting point.
 > 
 > When using `Binh(routes, options)`, by default, router associates with `document.body`.
 >
-> ***NOTE:*** if the element is not rendered on DOM, all routing settings is removed and unavailable.
+> ***NOTE:***
+> * If the associated element is not present on DOM, all routing settings is removed and unavailable.
 
 <br/>
 
@@ -85,10 +86,10 @@ Therefore, understanding Router is a good starting point.
 > 
 > A function invoked every time a new path/route is loaded.
 >
-> Note:
+> ***NOTE:***
 > * navigate to same path, e.g. `/home` -> `/home`, won't invoke this function.
 > * the function is unique and works for all instances of Router.
-> * which means further new callback declaration will override the old one.
+> * which means further new callback declarations will override the old one.
 >
 > **@return** : undefined
 
@@ -98,13 +99,9 @@ Therefore, understanding Router is a good starting point.
 
 > **@param** `route` : string
 > 
-> Navigate the current route (current view)
-> 
-> to another route (another view)
+> Navigate the current route (current view) to another route (another view) by changing the URL but not reloading whole webpage
 >
-> by changing the URL but not reloading whole webpage
->
-> Note:
+> ***NOTE:***
 > * Cannot navigate to same path, e.g. `/home` -> `/home`, nothing happens.
 >
 > **@return** : undefined
