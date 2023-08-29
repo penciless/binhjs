@@ -2,7 +2,7 @@
 
 # Routing
 
-URL Address indicates which content should be displayed on web page.
+URL Address indicates which content should be displayed on webpage.
 
 Router plays a role on detecting current URL parts and switching views.
 
@@ -11,7 +11,7 @@ Therefore, understanding Router is a good starting point.
 ## 1. Router
 
 **Class:** `Binh.Router`
-> Contructor `Binh(routes, options)` initializing web app is actually a `Binh.Router` under its implementation, but with extend settings.
+> Contructor `Binh(routes, options)` initializing web app is actually a `Binh.Router` under its implementation, but with default settings.
 
 <br/>
 
@@ -32,7 +32,7 @@ Therefore, understanding Router is a good starting point.
 
 > **@param** `routes` : Object
 >
-> An object with `key` as URL pattern and `value` as Number, URL String, or UI Component
+> An object `{ key : value }` with `key` as URL pattern and `value` as Number, URL String, or UI Component
 > 
 > ```js
 > {
@@ -98,8 +98,11 @@ Therefore, understanding Router is a good starting point.
 
 > **@param** `route` : string
 > 
-> Navigate the current route (current web page)
-> to another route (another web page)
+> Navigate the current route (current view)
+> 
+> to another route (another view)
+>
+> by changing the URL but not reloading whole webpage
 >
 > Note:
 > * Cannot navigate to same path, e.g. `/home` -> `/home`, nothing happens.
