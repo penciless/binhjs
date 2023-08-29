@@ -128,7 +128,7 @@ Therefore, understanding Router is a good point to get started.
 > **@return** : Object
 >
 > `https://your-website.com/home?id=101&product=box`
-> ```
+> ```js
 > {
 >   id: "10",
 >   product: "box"
@@ -148,9 +148,26 @@ Therefore, understanding Router is a good point to get started.
 
 ## 1. Nested routing
 
-Every route starts at root hostname.
+Every route is defined using absolute path, always starting from hostname.
 
-Every router is an independent instance and not relevant to each others.
+`https://yourwebsite.com/goto/path`
+```
+hostname: yourwebsite.com
+route: /goto/path
+```
+
+Every router is an independent instance and not relevant to each others, which means each router declaring different targets for the same route will not override each others.
+
+Each router only changes view of its associated element (container holding content) base on the current route (URL pathname) and queries.
+
+```js
+{
+  '/home': HomePage,
+  '/home/categories': WidgetCategories,
+  '/home/categories': WidgetCategories,
+  '/home/
+}
+```
 
 Nested routes are flattened into explicit URL pathnames
 
