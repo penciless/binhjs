@@ -4,9 +4,9 @@
 
 URL Address indicates which content should be displayed on webpage.
 
-Router plays a role on detecting current URL parts and switching views.
+Router plays a role on handling URLs and switching views.
 
-Therefore, understanding Router is a good starting point.
+Therefore, understanding Router is a good point to get started.
 
 ## 1. Router
 
@@ -20,7 +20,7 @@ Therefore, understanding Router is a good starting point.
 > 
 > To indicate which element should be associated, use `options.enode` _(prior)_, or `options.element`.
 > 
-> By default, if no declaration, it associates with a `<div>` element created by itself.
+> By default, if no declaration, reouter associates with a `<div>` element created by itself.
 > 
 > When using `Binh(routes, options)`, by default, router associates with `document.body`.
 >
@@ -50,7 +50,7 @@ Therefore, understanding Router is a good starting point.
 >   '/dumb1': Binh.el('div')('Hello World'),
 >
 >   // a text node of 123 is created as UI Component
->   '/dum2': 123,
+>   '/dumb2': 123,
 > 
 >   '/custom': function() {
 >       // any code
@@ -82,14 +82,14 @@ Therefore, understanding Router is a good starting point.
 
 **Method:** `Binh.Router.onroute(callback)`
 
-> **@param** `callback` : Object
-> 
 > A function invoked every time a new path/route is loaded.
->
+> 
 > ***NOTE:***
 > * navigate to same path, e.g. `/home` -> `/home`, won't invoke this function.
-> * the function is unique and works for all instances of Router.
+> * the function is unique and run before all instances of Router,
 > * which means further new callback declarations will override the old one.
+> 
+> **@param** `callback` : Function
 >
 > **@return** : undefined
 
@@ -97,11 +97,40 @@ Therefore, understanding Router is a good starting point.
 
 **Method:** `Binh.Router.navigate(route)`
 
-> **@param** `route` : string
-> 
-> Navigate the current route (current view) to another route (another view) by changing the URL but not reloading whole webpage
+> Navigate the current route (current view) to another route (another view) by changing the URL but not reloading whole webpage.
 >
 > ***NOTE:***
 > * Cannot navigate to same path, e.g. `/home` -> `/home`, nothing happens.
 >
+> **@param** `route` : string
+> 
 > **@return** : undefined
+
+<br/>
+
+**Method:** `Binh.Router.query(shouldDecode)`
+
+> Get the current queries on URL as an object.
+>
+> **@param** `shouldDecode` : boolean
+>
+> By default, `shouldDecode` is `false`.
+>
+> When declared as `true`, decoding URL is processed using `JavaScript:decodeURIComponent()` before parsing values into object.
+> 
+> **@return** : Object
+>
+> `https://your-website.com/home?id=101&product=box`
+> ```
+> {
+>   id: "10",
+>   product: "box"
+> }
+> ```
+> ***NOTE:*** Returned values are always type of `string`.
+
+
+How to modify routes later?
+How to get current route?
+How to reload whole webpage?
+Alternatives for getting query object?
