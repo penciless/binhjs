@@ -100,6 +100,8 @@ There are 4 directories for UI Components:
 * ***layouts***: group of elements/features is arranged and aligned in a portion of view
 * ***pages***: group of elements/features/layouts is arranged and aligned on a web page specified by URL/route
 
+As for Service/Style Component, they will be mentioned further in later sections.
+
 ### Conclusion
 
 By splitting UI components into 4 types, it helps to reuse components in different levels more apparently.
