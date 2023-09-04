@@ -115,25 +115,39 @@ Therefore, understanding Router is a good point to get started.
 
 <br/>
 
-**Class Method:** `Binh.Router.query(shouldDecode)`
+**Class Method:** `Binh.Router.query(ignoreDecode)`
 
 > Get the current queries on URL as an object.
 >
-> **@param** `shouldDecode` : boolean
+> **@param** `ignoreDecode` : boolean
 >
-> By default, `shouldDecode` is `false`.
+> `false` by default, decoding URL is processed using `JavaScript:decodeURIComponent()` before parsing values into object.
 >
-> When declared as `true`, decoding URL is processed using `JavaScript:decodeURIComponent()` before parsing values into object.
+> When declared as `true`, decoding URL is ignored, returning raw values from URL which might be encoded by browser.
+>
+> Moreover, when declared as `false`, values encountering decoding error will also return raw values.
 > 
 > **@return** : Object
 >
 > `https://your-website.com/home?id=101&product=box`
-> ```js
+> ```json
 > {
->   id: "10",
->   product: "box"
+>   "id": "101",
+>   "product": "box"
 > }
 > ```
+>
+> `https://your-website.com/home?id=99&product=&key&encode=test%20it&=empty`
+> ```json
+> {
+>   "id": "99",
+>   "product": "",
+>   "key": "",
+>   "encode": "test it",
+>   "": "empty"
+> }
+> ```
+> 
 > ***NOTE:*** Returned values are always type of `string`.
 
 <br/>
@@ -146,7 +160,7 @@ Therefore, understanding Router is a good point to get started.
 
 <br/>
 
-## 1. Nested routing
+## 2. Nested routing
 
 Every route is defined using absolute path, always starting from hostname.
 
@@ -156,29 +170,94 @@ hostname: yourwebsite.com
 route: /goto/path
 ```
 
-Every router is an independent instance and not relevant to each others, which means each router declaring different targets for the same route will not override each others.
+Routers are independent instances and not relevant to each others, which means routers declaring different targets for the same route will not conflict with each others.
 
-Each router only changes view of its associated element (container holding content) base on the current route (URL pathname) and queries.
+Each router only changes content of its associated element _(container holding content)_ based on the current route _(URL pathname)_ and queries.
 
+If so, how can nested routing be implemented?
+
+***Please look at the following example:***
+
+`Main Router` associated with `document.body` _(or `<body>`)_
 ```js
 {
   '/home': HomePage,
-  '/home/categories': WidgetCategories,
-  '/home/categories': WidgetCategories,
-  '/home/
+  '/home/categories': HomePage,
+  '/home/list': HomePage,
+  '/product': ProductPage
 }
 ```
 
-Nested routes are flattened into explicit URL pathnames
+`Sub Router` associated with `<div>` inside `<body>`
+```js
+{
+  '/home': Categories,
+  '/home/categories': Categories,
+  '/home/list': ListView
+}
+```
 
-Not support URL parameters '/:key', only support URL query '?keyA=valueA&keyB=valueB'
+`Main Router`: as long as the route is matched, `HomePage` will be rendered inside `<body>`.
+
+`Sub Router`: as long as the route is matched and `<div>` exists inside `<body>`, `Categories` or `ListView` will be rendered inside `<div>` _(depending on which route is matched)_.
+
+In other words,
+* `Main Router` matches route `/home` and renders `HomePage` into `<body>`.
+* By somehow, `HomePage` in `<body>` contains `<div>` which associted with `Sub Router`.
+* `Sub Router` also matches route `/home` and renders `Categories` into `<div>`.
+
+Thus, no link between routers, but there is link between elements associated with routers and the current route.
+
+If `HomePage` is not rendered by `Main Router`, there is no `<div>` and no place for `Sub Router` to render `Categories`.
+
+That's how nested routing is implemented.
+
+***Bonus, another way to switch view with router:***
+
+`Sub Router` associated with `<div>` inside `<body>`
+
+```js
+{
+  '/home': function() {
+    var query = Binh.Router.query();
+
+    if (query.view === 'list') return ListView;
+    if (query.view === 'categories') return Categories;
+    else return Categories; // default
+  }
+}
+```
+
+`ListView` is rendered when `https://yourwebsite.com/home?view=list`.
+
+`Categories` is rendered when `https://yourwebsite.com/home?view=categories`.
+
+`Categories` is rendered when `https://yourwebsite.com/home`. _(default)_
 
 <br/>
 
-How to modify routes later?
+## 3. URL parameters (Not supported)
 
-How to get current route?
+Not support URL parameters like `/route_name/:id/:product`, only support URL query `/route_name?id=123&product=anything`.
 
-How to reload whole webpage?
+<br/>
 
-Alternatives for getting query object?
+## 4. How to modify routes later?
+
+In statement `new Binh.Router(routes, options)`, object `routes` can be used for later modification _(add, update, delete)_.
+
+<br/>
+
+## 5. How to get current route?
+
+Use pure JavaScript `location.pathname` to get the current route.
+
+<br/>
+
+## 6. How to reload whole webpage?
+
+Use pure JavaScript `location.reload()` to reload whole webpage.
+
+<br/>
+
+## 7. Alternatives for getting query object?
