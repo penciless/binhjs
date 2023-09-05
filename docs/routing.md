@@ -259,5 +259,3 @@ Use pure JavaScript `location.pathname` to get the current route.
 Use pure JavaScript `location.reload()` to reload whole webpage.
 
 <br/>
-
-## 7. Alternatives for getting query object?
