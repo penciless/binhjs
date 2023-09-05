@@ -236,7 +236,7 @@ That's how nested routing is implemented.
 
 <br/>
 
-## 3. URL parameters (Not supported)
+## 3. URL parameters
 
 Not support URL parameters like `/route_name/:id/:product`, only support URL query `/route_name?id=123&product=anything`.
 
