@@ -97,8 +97,8 @@ However, a convention should be declared to follow.
 There are 4 directories for UI Components:
 * ***elements***: most basic and independent components can be reused widely _(even outside project)_
 * ***features***: components are dependent with other components (UI, State, Services) to implement a complete feature _(mainly reused cross project)_
-* ***layouts***: group of elements/features is arranged and aligned in a portion of view
-* ***pages***: group of elements/features/layouts is arranged and aligned on a web page specified by URL/route
+* ***layouts***: group of elements/features are arranged and aligned in a portion of view
+* ***pages***: group of elements/features/layouts are arranged and aligned on a web page specified by URL/route
 
 As for Service/Style Component, they will be mentioned further in later sections.
 
