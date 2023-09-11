@@ -22,6 +22,17 @@ The document is a tutorial using this framework.
   5. [How to get current route?](docs/routing.md#5-how-to-get-current-route)
   6. [How to reload whole webpage?](docs/routing.md#6-how-to-reload-whole-webpage)
 
-**UI Components**
+**Component: UI**
   1. Declaration
-  2. Import components
+  2. Importing
+  3. Usage
+
+**Component: Style**
+  1. Declaration
+  2. Importing
+  3. Usage
+
+**Component: Service**
+  1. Declaration
+  2. Importing
+  3. Usage
