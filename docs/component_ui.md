@@ -2,23 +2,23 @@
 
 # Components
 
-Components are building units of the whole web page.
+`Components` are building units of the whole web page.
 
 There are 3 types of them:
 
-* UI: implement how HTML element is constructed and referenced.
-* Style: rules of how UI should be arranged, aligned, or decorated.
-* Service: a proxy to process data and communicate with server.
+* **UI**: implement how HTML element is constructed and referenced.
+* **Style**: rules of how UI should be arranged, aligned, or decorated.
+* **Service**: a proxy to process data and communicate with server.
 
-All 3 types of components are declared using JavaScript.
+All `3` types of components are declared using `JavaScript`.
 
-Simply speaking, HTML, CSS and JS are all written in JavaScript ONLY.
+Simply speaking, `HTML`, `CSS` and `JS` are all written in `JavaScript` ONLY.
 
-In [binhend], supporting CSS files _(.css)_ bundled into Style Component and shipped to front-end.
+However, [binhend] supports bundling CSS files _(.css)_ into `Style Component` and shipped to front-end.
 
 <br/>
 
-***In this section, we discuss more detail about:***
+### In this section, we discuss more detail about:
 
 # Component: UI
 
