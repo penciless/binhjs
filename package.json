@@ -1,9 +1,12 @@
 {
-  "name": "binhjs",
-  "version": "1.0.0",
+  "name": "@binhjs/core",
+  "version": "1.0.1",
   "description": "Binh Framework",
   "author": "Nguyen Duc Binh",
-  "license": "UNLICENSED",
-  "private": true,
-  "main": "index.js"
+  "license": "MIT",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  }
 }
